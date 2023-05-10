@@ -11,15 +11,19 @@ const Home = () => {
       setBlogposts(data)
     }
     fetchBlogposts()
-  })
+  }, [])
   return (
-    <div style={{ margin: '7%' }}>
+    <div className='main-container'>
       <h2>Latest Submissions:</h2>
       {blogposts &&
-        blogposts.reverse().map((blogpost) => (
-          <Link to={`/blogpost/${blogpost._id}`} className='nav-link'>
-            <div key={blogpost.title}>
-              <h4>{blogpost.date}</h4>
+        blogposts.map((blogpost) => (
+          <Link
+            to={`/blogpost/${blogpost._id}`}
+            className='nav-link'
+            key={blogpost.title}
+          >
+            <div>
+              <h5>{blogpost.date}</h5>
               <h4 style={{ display: 'inline' }}>{blogpost.title}</h4>
               <h4
                 style={{
@@ -32,12 +36,11 @@ const Home = () => {
                 <img
                   src={blogpost.userImage}
                   alt={blogpost.user}
-                  style={{ height: '60px' }}
+                  style={{ height: '60px', borderRadius: '50%' }}
                 />
-                {blogpost.user}
               </h4>
 
-              <h6>{blogpost.body.substring(0, 50)}...</h6>
+              <h6>{blogpost.body}...</h6>
               <hr />
             </div>
           </Link>

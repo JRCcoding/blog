@@ -4,10 +4,13 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import cors from 'cors'
 import blogRoutes from './Routes/blogRoutes.js'
+import bodyParser from 'body-parser'
 
 dotenv.config()
 
 const app = express()
+app.use(express.json())
+app.use(bodyParser.json())
 DB()
 app.use(cors())
 app.use('/api/blogposts', blogRoutes)

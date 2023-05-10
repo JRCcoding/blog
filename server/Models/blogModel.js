@@ -2,17 +2,25 @@ import mongoose from 'mongoose'
 
 const blogSchema = mongoose.Schema(
   {
+    submitUser: {
+      type: String,
+      required: false,
+    },
+    submitUserImage: {
+      type: String,
+      required: false,
+    },
     title: {
       type: String,
-      required: true,
+      required: false,
     },
     date: {
       type: String,
-      required: true,
+      required: false,
     },
     body: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   {

@@ -1,12 +1,15 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
+import BlogPost from './Screens/BlogPost'
+import New from './Screens/New'
 import Profile from './Screens/Profile'
 import About from './Screens/About'
 import Home from './Screens/Home'
-import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0()
+
   return (
     <Router>
       <div>
@@ -38,16 +41,13 @@ function App() {
             {isAuthenticated ? (
               <>
                 <li>
-                  <Link to='/profile' className='nav-link'>
-                    {user.name}
+                  <Link to='/new' className='nav-link'>
+                    New Post
                   </Link>
                 </li>
                 <li>
                   <Link
-                    style={{
-                      textDecoration: 'none',
-                      color: 'black',
-                    }}
+                    className='nav-link'
                     onClick={() =>
                       logout({
                         logoutParams: { returnTo: window.location.origin },
@@ -68,6 +68,8 @@ function App() {
           </ul>
         </nav>
         <Routes>
+          <Route path='/blogpost/:id' element={<BlogPost />} />
+          <Route path='/new' element={<New />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/about' element={<About />} />
           <Route path='/' element={<Home />} exact />
