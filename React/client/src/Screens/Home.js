@@ -25,7 +25,7 @@ const Home = () => {
             <div>
               <h5>{blogpost.date}</h5>
               <h4 style={{ display: 'inline' }}>{blogpost.title}</h4>
-              <h4
+              <div
                 style={{
                   display: 'inline',
                   // position: 'absolute',
@@ -34,13 +34,13 @@ const Home = () => {
                 }}
               >
                 <img
-                  src={blogpost.userImage}
-                  alt={blogpost.user}
+                  src={blogpost.submitUserImage}
+                  alt={blogpost.submitUser}
                   style={{ height: '60px', borderRadius: '50%' }}
                 />
-              </h4>
+              </div>
 
-              <h6>{blogpost.body}...</h6>
+              <h6>{blogpost.body.substring(0, 100)}...</h6>
               <hr />
             </div>
           </Link>

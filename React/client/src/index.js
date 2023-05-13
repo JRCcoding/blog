@@ -12,6 +12,8 @@ root.render(
     clientId='2SGCWz2U2Cs96woMjSWXI488KYHSlbx1'
     authorizationParams={{
       redirect_uri: 'http://localhost:3000',
+      prompt: 'login',
+      scope: 'read:users read:client_grants profile',
     }}
   >
     <App />

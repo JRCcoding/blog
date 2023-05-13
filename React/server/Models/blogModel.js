@@ -2,6 +2,10 @@ import mongoose from 'mongoose'
 
 const blogSchema = mongoose.Schema(
   {
+    submitId: {
+      type: String,
+      required: false,
+    },
     submitUser: {
       type: String,
       required: false,
