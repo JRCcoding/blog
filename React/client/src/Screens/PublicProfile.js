@@ -43,7 +43,7 @@ const PublicProfile = ({ location }) => {
               alt={prof.given_name}
               style={{ borderRadius: '50%' }}
             />
-            <h1>{prof.given_name}</h1>
+            <h1>{prof.user_metadata.about}</h1>
           </div>
         ))}
       </h2>

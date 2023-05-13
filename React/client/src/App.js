@@ -46,22 +46,22 @@ function App() {
                     New Post
                   </Link>
                 </li>
-                {/* <li>
+                <li>
                   <Link to='/profile'>
                     <img
                       src={user.picture}
                       alt={user.name}
-                      // style={{
-                      //   height: '55px',
-                      //   width: '55px',
-                      //   borderRadius: '50%',
-                      //   position: 'absolute',
-                      //   right: '5%',
-                      //   top: '0',
-                      // }}
+                      style={{
+                        height: '55px',
+                        width: '55px',
+                        borderRadius: '50%',
+                        position: 'absolute',
+                        right: '12%',
+                        top: '0',
+                      }}
                     />
                   </Link>
-                </li> */}
+                </li>
                 <li>
                   <Link
                     className='nav-link'
@@ -69,7 +69,7 @@ function App() {
                       scale: '85%',
                       color: 'darkred',
                       position: 'absolute',
-                      right: '12%',
+                      right: '5%',
                     }}
                     onClick={() =>
                       logout({
