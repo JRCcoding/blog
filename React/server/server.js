@@ -19,17 +19,17 @@ app.use('/api/blogposts', blogRoutes)
 
 const PORT = process.env.PORT || 5000
 
-//      AUTH0 CONFIG
-const jwtCheck = auth({
-  audience: 'http://localhost:3000',
-  issuerBaseURL: 'https://dev-dstps3q4l34f7d23.us.auth0.com/',
-  tokenSigningAlg: 'RS256',
-})
-app.use(jwtCheck)
+// //      AUTH0 CONFIG
+// const jwtCheck = auth({
+//   audience: 'http://localhost:3000',
+//   issuerBaseURL: 'https://dev-dstps3q4l34f7d23.us.auth0.com/',
+//   tokenSigningAlg: 'RS256',
+// })
+// app.use(jwtCheck)
 
-app.get('/authorized', function (req, res) {
-  res.send('Secured Resource')
-})
+// app.get('/authorized', function (req, res) {
+//   res.send('Secured Resource')
+// })
 
 app.listen(
   PORT,
