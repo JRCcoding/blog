@@ -33,11 +33,12 @@ const Home = () => {
                   float: 'right',
                 }}
               >
-                <img
+                {/* <img
                   src={blogpost.submitUserImage}
                   alt={blogpost.submitUser}
                   style={{ height: '60px', borderRadius: '50%' }}
-                />
+                /> */}
+                <strong>- {blogpost.submitUser}</strong>
               </div>
 
               <h6>{blogpost.body.substring(0, 100)}...</h6>

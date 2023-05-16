@@ -7,6 +7,7 @@ import PublicProfile from './Screens/PublicProfile'
 import Profile from './Screens/Profile'
 import About from './Screens/About'
 import Home from './Screens/Home'
+import { FaUserCircle } from 'react-icons/fa'
 
 function App() {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0()
@@ -47,8 +48,8 @@ function App() {
                   </Link>
                 </li>
                 <li>
-                  <Link to='/profile'>
-                    <img
+                  <Link to={`/profile/${user.sub}`}>
+                    {/* <img
                       src={user.picture}
                       alt={user.name}
                       style={{
@@ -58,6 +59,13 @@ function App() {
                         position: 'absolute',
                         right: '12%',
                         top: '0',
+                      }}
+                    /> */}
+                    <FaUserCircle
+                      style={{
+                        position: 'absolute',
+                        right: '12%',
+                        top: '1.5%',
                       }}
                     />
                   </Link>

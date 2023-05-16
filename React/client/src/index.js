@@ -13,7 +13,9 @@ root.render(
     authorizationParams={{
       redirect_uri: 'http://localhost:3000',
       prompt: 'login',
-      scope: 'read:users read:client_grants profile',
+      scope:
+        'read:users read:current_user read:client_grants profile create:current_user_metadata update:current_user_metadata',
+      useRefreshTokens: true,
     }}
   >
     <App />

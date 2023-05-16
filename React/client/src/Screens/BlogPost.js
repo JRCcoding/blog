@@ -51,11 +51,11 @@ const BlogPost = () => {
           >
             <sub>
               &nbsp;&nbsp; - by {blogpost.submitUser}
-              <img
+              {/* <img
                 src={blogpost.submitUserImage}
                 alt={blogpost.submitUser}
                 style={{ height: '40px', borderRadius: '50%' }}
-              />
+              /> */}
             </sub>
           </Link>
           <br />
