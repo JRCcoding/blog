@@ -11,7 +11,7 @@ root.render(
     domain='dev-dstps3q4l34f7d23.us.auth0.com'
     clientId='2SGCWz2U2Cs96woMjSWXI488KYHSlbx1'
     authorizationParams={{
-      redirect_uri: 'http://localhost:3000',
+      redirect_uri: 'https://blog-gpj8.onrender.com',
       // prompt: 'login',
       audience: 'https://dev-dstps3q4l34f7d23.us.auth0.com/api/v2/',
 
