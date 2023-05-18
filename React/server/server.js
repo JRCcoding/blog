@@ -5,7 +5,8 @@ import colors from 'colors'
 import cors from 'cors'
 import blogRoutes from './Routes/blogRoutes.js'
 import bodyParser from 'body-parser'
-import { auth } from 'express-oauth2-jwt-bearer'
+import multer from 'multer'
+import fs from 'fs'
 
 dotenv.config()
 
@@ -19,18 +20,65 @@ app.use('/api/blogposts', blogRoutes)
 
 const PORT = process.env.PORT || 5000
 
-// //      AUTH0 CONFIG
-// const jwtCheck = auth({
-//   audience: 'http://localhost:3000',
-//   issuerBaseURL: 'https://dev-dstps3q4l34f7d23.us.auth0.com/',
-//   tokenSigningAlg: 'RS256',
+const today = new Date()
+const splitToday = JSON.stringify(today).split('-')
+const year = splitToday[0]
+const month = splitToday[1]
+const day = splitToday[2].substring(0, 2)
+const submitDate = month + '-' + day + '-' + year.substring(1, 5)
+const fileType = (str) => {
+  str.slice(str.lastIndexOf('.'))
+}
+// const upload = multer({
+//   dest: 'images/',
+//   limits: {
+//     fileSize: 999999999999,
+//   },
 // })
-// app.use(jwtCheck)
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'client/public/images')
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${submitDate}.jpg`)
+  },
+})
 
-// app.get('/authorized', function (req, res) {
-//   res.send('Secured Resource')
+const upload = multer({ storage: storage })
+
+app.use('/api/images', express.static('images'))
+// app.get('/images', (req, res) => {
+//   // do a bunch of if statements to make sure the user is
+//   // authorized to view this image, then
+
+//   const imageName = `${submitDate}.jpg`
+//   const readStream = fs.createReadStream(`images/${imageName}`)
+//   readStream.pipe(res)
 // })
 
+app.post('/api/images', upload.single('image'), (req, res) => {
+  const imageName = `${submitDate}.jpg`
+  const description = req.body.description
+
+  // Save this data to a database probably
+
+  console.log(description, imageName)
+  res.send({ description, imageName })
+})
+
+app.delete('/api/images/delete', (req, res) => {
+  const { fileName } = req.query
+
+  // Delete the image file
+  fs.unlink(`client/public/images/${fileName}`, (error) => {
+    if (error) {
+      console.error(error)
+      return res.status(500).send({ error: 'Failed to delete the image' })
+    }
+  })
+  console.log(req.body)
+  res.send(req.body)
+})
 app.listen(
   PORT,
   console.log(

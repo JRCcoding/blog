@@ -12,11 +12,12 @@ const Home = () => {
     }
     fetchBlogposts()
   }, [])
+
   return (
     <div className='main-container'>
       <h2>Latest Submissions:</h2>
       {blogposts &&
-        blogposts.map((blogpost) => (
+        blogposts.reverse().map((blogpost) => (
           <Link
             to={`/blogpost/${blogpost._id}`}
             className='nav-link'

@@ -2,6 +2,7 @@ import express from 'express'
 import asyncHandler from 'express-async-handler'
 const router = express.Router()
 import Blog from '../Models/blogModel.js'
+import fs from 'fs'
 
 router.get(
   '/',

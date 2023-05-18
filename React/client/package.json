@@ -8,6 +8,7 @@
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.2.3",
+    "fs": "^0.0.1-security",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",

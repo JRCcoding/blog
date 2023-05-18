@@ -1,12 +1,11 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-import BlogPost from './Screens/BlogPost'
-import New from './Screens/New'
-import PublicProfile from './Screens/PublicProfile'
-import Profile from './Screens/Profile'
-import About from './Screens/About'
-import Home from './Screens/Home'
+import BlogPost from './screens/BlogPost'
+import New from './screens/New'
+import PublicProfile from './screens/PublicProfile'
+import Profile from './screens/Profile'
+import Home from './screens/Home'
 import { FaUserCircle } from 'react-icons/fa'
 
 function App() {
@@ -30,23 +29,8 @@ function App() {
               borderBottom: '1px solid black',
             }}
           >
-            <li>
-              <Link to='/' className='nav-link'>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to='/about' className='nav-link'>
-                About
-              </Link>
-            </li>
             {isAuthenticated ? (
               <>
-                <li>
-                  <Link to='/new' className='nav-link'>
-                    New Post
-                  </Link>
-                </li>
                 <li>
                   <Link to={`/profile/${user.sub}`}>
                     {/* <img
@@ -61,23 +45,15 @@ function App() {
                         top: '0',
                       }}
                     /> */}
-                    <FaUserCircle
-                      style={{
-                        position: 'absolute',
-                        right: '12%',
-                        top: '1.5%',
-                      }}
-                    />
+                    <FaUserCircle />
                   </Link>
                 </li>
                 <li>
                   <Link
                     className='nav-link'
                     style={{
-                      scale: '85%',
+                      fontWeight: 'bold',
                       color: 'darkred',
-                      position: 'absolute',
-                      right: '5%',
                     }}
                     onClick={() =>
                       logout({
@@ -88,6 +64,11 @@ function App() {
                     Logout
                   </Link>
                 </li>
+                <li>
+                  <Link to='/new' className='nav-link'>
+                    New Post
+                  </Link>
+                </li>
               </>
             ) : (
               <li>
@@ -96,8 +77,6 @@ function App() {
                   style={{
                     color: 'darkgreen',
                     fontWeight: 'bold',
-                    position: 'absolute',
-                    right: '12%',
                   }}
                   onClick={() => loginWithRedirect()}
                 >
@@ -105,6 +84,11 @@ function App() {
                 </Link>
               </li>
             )}
+            <li>
+              <Link to='/' className='nav-link'>
+                Home
+              </Link>
+            </li>
           </ul>
         </nav>
         <Routes>
@@ -112,7 +96,6 @@ function App() {
           <Route path='/new' element={<New />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/profile/:id' element={<PublicProfile />} />
-          <Route path='/about' element={<About />} />
           <Route path='/' element={<Home />} exact />
         </Routes>
       </div>

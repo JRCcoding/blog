@@ -12,10 +12,13 @@ root.render(
     clientId='2SGCWz2U2Cs96woMjSWXI488KYHSlbx1'
     authorizationParams={{
       redirect_uri: 'http://localhost:3000',
-      prompt: 'login',
+      // prompt: 'login',
+      audience: 'https://dev-dstps3q4l34f7d23.us.auth0.com/api/v2/',
+
       scope:
         'read:users read:current_user read:client_grants profile create:current_user_metadata update:current_user_metadata',
       useRefreshTokens: true,
+      cacheLocation: 'localstorage',
     }}
   >
     <App />

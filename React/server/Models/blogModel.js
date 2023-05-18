@@ -26,6 +26,10 @@ const blogSchema = mongoose.Schema(
       type: String,
       required: false,
     },
+    upload: {
+      type: Object,
+      required: false,
+    },
   },
   {
     timestamps: true,
