@@ -73,11 +73,9 @@ app.delete('/api/images/delete', (req, res) => {
   fs.unlink(`client/public/images/${fileName}`, (error) => {
     if (error) {
       console.error(error)
-      return res.status(500).send({ error: 'Failed to delete the image' })
     }
   })
   console.log(req.body)
-  res.send(req.body)
 })
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('../client/build'))

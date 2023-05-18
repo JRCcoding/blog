@@ -107,6 +107,7 @@ const New = ({ history }) => {
         <input
           onChange={(e) => setDescription(e.target.value)}
           type='text'
+          required={file && true}
         ></input>
         <button type='submit'>Submit</button>
       </Form>

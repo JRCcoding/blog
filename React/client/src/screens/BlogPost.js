@@ -47,76 +47,62 @@ const BlogPost = () => {
 
   return (
     <>
-      {isAuthenticated ? (
-        <>
-          {blogpost && (
-            <div
-              className='main-container'
-              style={{
-                marginTop: '10%',
-                padding: '5%',
-                border: 'solid 1px black',
-                borderRadius: '5px',
-                height: '80%',
-              }}
-            >
-              <h1 style={{ display: 'inline' }}>{blogpost.title}</h1>
-              <strong style={{ display: 'inline', float: 'right' }}>
-                {blogpost.date}
-              </strong>
-              <br />
-              <Link
-                to={`/profile/${blogpost.submitId}`}
-                style={{ textDecoration: 'none', color: 'black' }}
-              >
-                <sub>
-                  &nbsp;&nbsp; - by {blogpost.submitUser}
-                  {/* <img
+      {blogpost && (
+        <div
+          className='main-container'
+          style={{
+            marginTop: '10%',
+            padding: '5%',
+            border: 'solid 1px black',
+            borderRadius: '5px',
+            height: '80%',
+          }}
+        >
+          <h1 style={{ display: 'inline' }}>{blogpost.title}</h1>
+          <strong style={{ display: 'inline', float: 'right' }}>
+            {blogpost.date}
+          </strong>
+          <br />
+          <Link
+            to={`/profile/${blogpost.submitId}`}
+            style={{ textDecoration: 'none', color: 'black' }}
+          >
+            <sub>
+              &nbsp;&nbsp; - by {blogpost.submitUser}
+              {/* <img
                 src={blogpost.submitUserImage}
                 alt={blogpost.submitUser}
                 style={{ height: '40px', borderRadius: '50%' }}
               /> */}
-                </sub>
-                <br />
-              </Link>
-              <br />
-              <p style={{ textIndent: '15px', wordWrap: 'break-word' }}>
-                {blogpost?.upload && (
-                  <>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <img
-                        src={`/images/${blogpost.upload?.imageName}`}
-                        alt={blogpost.upload?.imageName}
-                        style={{ width: '460px' }}
-                      />
-                      <strong style={{ width: '95%' }}>
-                        <i>{blogpost.upload.description}</i>
-                      </strong>
-                    </div>
-                  </>
+            </sub>
+            <br />
+          </Link>
+          <br />
+          <p style={{ textIndent: '15px', wordWrap: 'break-word' }}>
+            {blogpost?.upload && (
+              <>
+                {blogpost.upload.description !== '' && (
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <img
+                      src={`/images/${blogpost.upload?.imageName}`}
+                      alt={blogpost.upload?.imageName}
+                      style={{ width: '460px' }}
+                    />
+                    <strong style={{ width: '95%' }}>
+                      <i>{blogpost.upload.description}</i>
+                    </strong>
+                  </div>
                 )}
-                {blogpost.body}
-              </p>
-              {user?.email === process.env.ADMIN_EMAIL && (
-                <button
-                  onClick={() => deleteHandler()}
-                  style={{ float: 'right' }}
-                >
-                  Delete
-                </button>
-              )}
-            </div>
+              </>
+            )}
+            {blogpost.body}
+          </p>
+          {user?.email === process.env.ADMIN_EMAIL && (
+            <button onClick={() => deleteHandler()} style={{ float: 'right' }}>
+              Delete
+            </button>
           )}
-        </>
-      ) : (
-        <>
-          <button
-            onClick={loginWithRedirect}
-            style={{ scale: '2.5', marginLeft: '20%' }}
-          >
-            Login!
-          </button>
-        </>
+        </div>
       )}
     </>
   )
