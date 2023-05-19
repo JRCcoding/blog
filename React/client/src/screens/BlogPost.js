@@ -37,8 +37,10 @@ const BlogPost = () => {
       .then((response) => {
         console.log('Status: ', response.status)
         console.log('Deleted Data: ', response.data)
-        deleteImage()
-        loginWithRedirect()
+        if (blogpost.upload.description !== '') {
+          deleteImage()
+        }
+        navigate('/')
       })
       .catch((error) => {
         console.log('Something went wrong!', error)
@@ -78,7 +80,7 @@ const BlogPost = () => {
             <br />
           </Link>
           <br />
-          <p style={{ textIndent: '15px', wordWrap: 'break-word' }}>
+          <div style={{ textIndent: '15px', wordWrap: 'break-word' }}>
             {blogpost?.upload && (
               <>
                 {blogpost.upload.description !== '' && (
@@ -96,7 +98,7 @@ const BlogPost = () => {
               </>
             )}
             {blogpost.body}
-          </p>
+          </div>
           {user?.email === process.env.ADMIN_EMAIL && (
             <button onClick={() => deleteHandler()} style={{ float: 'right' }}>
               Delete

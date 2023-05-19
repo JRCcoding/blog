@@ -48,8 +48,7 @@ const New = ({ history }) => {
       body,
       upload: result.data,
     }
-    await axios.post(`/api/blogposts`, blogEntry)
-    loginWithRedirect().then(navigate('/'))
+    await axios.post(`/api/blogposts`, blogEntry).then(navigate('/'))
   }
 
   return (
