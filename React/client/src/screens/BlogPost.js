@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 const BlogPost = () => {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0()
@@ -100,7 +100,7 @@ const BlogPost = () => {
             {blogpost.body}
           </div>
           {user?.email === process.env.ADMIN_EMAIL && (
-            <button onClick={() => deleteHandler()} style={{ float: 'right' }}>
+            <button onClick={() => deleteHandler()} className='delete-button'>
               Delete
             </button>
           )}
