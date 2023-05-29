@@ -12,10 +12,10 @@ root.render(
     clientId='2SGCWz2U2Cs96woMjSWXI488KYHSlbx1'
     authorizationParams={{
       //  Redirect for production
-      // redirect_uri: 'https://blog-gpj8.onrender.com',
+      redirect_uri: 'https://blog-gpj8.onrender.com',
 
       //  Redirect for development
-      redirect_uri: 'http://localhost:3000',
+      // redirect_uri: 'http://localhost:3000',
 
       //  This line forces login each time, otherwise auto login after first.
       // prompt: 'login',
