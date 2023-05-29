@@ -1,12 +1,11 @@
-import express from 'express'
-import DB from './db.js'
-import dotenv from 'dotenv'
-import colors from 'colors'
-import cors from 'cors'
-import blogRoutes from './Routes/blogRoutes.js'
 import bodyParser from 'body-parser'
-import multer from 'multer'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import express from 'express'
 import fs from 'fs'
+import multer from 'multer'
+import blogRoutes from './Routes/blogRoutes.js'
+import DB from './db.js'
 
 dotenv.config()
 
@@ -47,14 +46,14 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 app.use('/api/images', express.static('images'))
-// app.get('/images', (req, res) => {
-//   // do a bunch of if statements to make sure the user is
-//   // authorized to view this image, then
+app.get('/images', (req, res) => {
+  // do a bunch of if statements to make sure the user is
+  // authorized to view this image, then
 
-//   const imageName = `${submitDate}.jpg`
-//   const readStream = fs.createReadStream(`images/${imageName}`)
-//   readStream.pipe(res)
-// })
+  const imageName = `${submitDate}.jpg`
+  const readStream = fs.createReadStream(`images/${imageName}`)
+  readStream.pipe(res)
+})
 
 app.post('/api/images', upload.single('image'), (req, res) => {
   const imageName = `${submitDate}.jpg`

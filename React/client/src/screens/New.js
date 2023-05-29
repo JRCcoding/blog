@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import axios from 'axios'
+import React, { useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
@@ -91,6 +91,7 @@ const New = ({ history }) => {
           <textarea
             type='text'
             name='body'
+            rows='150'
             style={{ height: '50vh', width: '100%' }}
             value={body}
             onChange={(e) => setBody(e.target.value)}

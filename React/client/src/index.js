@@ -1,9 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import App from './App'
 import { Auth0Provider } from '@auth0/auth0-react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -12,10 +12,10 @@ root.render(
     clientId='2SGCWz2U2Cs96woMjSWXI488KYHSlbx1'
     authorizationParams={{
       //  Redirect for production
-      redirect_uri: 'https://blog-gpj8.onrender.com',
+      // redirect_uri: 'https://blog-gpj8.onrender.com',
 
       //  Redirect for development
-      // redirect_uri: 'http://localhost:3000',
+      redirect_uri: 'http://localhost:3000',
 
       //  This line forces login each time, otherwise auto login after first.
       // prompt: 'login',
